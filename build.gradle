@@ -16,6 +16,7 @@ plugins {
     id "me.modmuss50.mod-publish-plugin" version "1.1.0"
 }
 
+if (false) { /* 发布 DSL 与 Gradle 8.12.1 不兼容；构建只需 build 出 jar，发布段禁用 */
 publishMods {
     type = BETA
     file = layout.buildDirectory.file("libs/${minecraft_version}-${mod_id}-${mod_version}.jar")
@@ -36,6 +37,7 @@ publishMods {
         optional("kubejs","emi","jei","refined-storage","patchouli","cloth-config","ars-nouveau","ae2","create","mekanism")
         requires("touhou-little-maid")
     }
+}
 }
 apply plugin: 'org.spongepowered.mixin'
 
