@@ -354,12 +354,12 @@ tasks.named('jar', Jar).configure {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
-tasks.named("publishMods").configure {
-    dependsOn("build")
+if (tasks.findByName("publishMods") != null) {
+    tasks.named("publishMods").configure { dependsOn("build") }
 }
-tasks.named("publishCurseforge").configure {
-    dependsOn("build")
+if (tasks.findByName("publishCurseforge") != null) {
+    tasks.named("publishCurseforge").configure { dependsOn("build") }
 }
-tasks.named("publishModrinth").configure {
-    dependsOn("build")
+if (tasks.findByName("publishModrinth") != null) {
+    tasks.named("publishModrinth").configure { dependsOn("build") }
 }
