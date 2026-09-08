@@ -23,8 +23,13 @@ jobs:
       - name: Grant execute permission to gradlew
         run: chmod +x gradlew
 
+      # CURSEFORGE_TOKEN / MODRINTH_TOKEN 只在发布时需要；CI 构建这里用占位空值，
+      # 让 publishMods{curseforge{}} 这段 DSL 能解析，build 任务本身不发布不受影响。
       - name: Build mod
         run: ./gradlew build --no-daemon
+        env:
+          ORG_GRADLE_PROJECT_CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          ORG_GRADLE_PROJECT_MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
 
       - name: Upload mod jar
         uses: actions/upload-artifact@v4
