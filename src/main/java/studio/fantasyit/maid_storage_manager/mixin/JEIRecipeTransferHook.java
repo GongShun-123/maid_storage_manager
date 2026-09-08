@@ -34,10 +34,6 @@ abstract public class JEIRecipeTransferHook extends GuiIconToggleButton {
     @Final
     private IRecipeLayoutDrawable<?> recipeLayout;
 
-    @Shadow(remap = false)
-    @Final
-    private Runnable onClose;
-
     public JEIRecipeTransferHook(IDrawable offIcon, IDrawable onIcon) {
         super(offIcon, onIcon);
     }
